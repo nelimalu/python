@@ -1,0 +1,5 @@
+discord.py
+PyNaCl
+youtube-search-python==1.4.9
+yt-dlp
+youtube_transcript_api
