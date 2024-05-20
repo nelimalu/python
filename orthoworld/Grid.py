@@ -33,7 +33,7 @@ class Grid:
 	def generate_noise(self):
 		noise = PerlinNoise(octaves=2, seed=self.seed)
 		noisemap = [[
-				noise([(i/self.width) - (self.dist / 50), j/self.width]) for j in range(self.width)] 
+				noise([(i/self.width) - (self.dist / 32), j/self.width]) for j in range(self.width)] 
 				for i in range(self.width)
 			]
 

@@ -22,7 +22,7 @@ def main():
 	run = True
 	count = 1
 	while run:
-		# time.sleep(0.01)
+		time.sleep(0.03)
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				run = False
