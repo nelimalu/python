@@ -10,11 +10,12 @@ class Block:
 	QUARTER_DIAG = DIAGONAL_LENGTH // 4
 
 
-	def __init__(self, x: int, y: int, z: int):
+	def __init__(self, x: int, y: int, z: int, colour=Colour(128,128,128)):
 		self.x: int = x
 		self.y: int = y
 		self.z: int = z
-		self.colour = Colour(128, 128, 128)
+		self.colour = colour
+		self.default_colour = colour
 		self.points: BlockPoints = self.get_key_points()
 		self.active_side = None
 

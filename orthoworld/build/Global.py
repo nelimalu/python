@@ -6,9 +6,9 @@ HEIGHT = 480
 
 # pixel coordinate of (0, 0, 0)
 ORIGIN_X = WIDTH // 2
-ORIGIN_Y = HEIGHT // 3
+ORIGIN_Y = HEIGHT // 4
 
-WORLDSIZE = 3
+WORLDSIZE = 7
 
 def draw_polygon(surf, coords, colour):
 	pygame.gfxdraw.filled_polygon(surf, coords, colour)
@@ -24,7 +24,13 @@ class Colour:
 		self.b = b
 
 	def get(self):
-		return self.r, self.b, self.g
+		return (self.r, self.g, self.b)
+
+	def highlight_copy(self):
+		return Colour(min(255, self.r + 20), min(255, self.g + 20), min(255, self.b + 20))
+
+	def shadow_copy(self):
+		return Colour(max(0, self.r - 20), max(0, self.g - 20), max(0, self.b - 20))
 
 	def get_highlight(self):
 		return (
@@ -39,3 +45,6 @@ class Colour:
 			max(0, self.g - self.SHADOW),
 			max(0, self.b - self.SHADOW)
 		)
+
+	def __str__(self):
+		return f"colour: {self.r} {self.g} {self.b}"

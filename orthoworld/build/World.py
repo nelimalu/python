@@ -31,9 +31,9 @@ class World:
 				for block in y_plane:
 					if block is not None:
 						if block == self.selected_block:
-							block.colour = Colour(148, 148, 148)
+							block.colour = block.default_colour.highlight_copy()
 						block.draw(win)
-						block.colour = Colour(128, 128, 128)
+						block.colour = block.default_colour
 
 		if closest_block is not None:
 			closest_block
@@ -44,13 +44,13 @@ class World:
 	def get(self, x, y, z):
 		return self.blocks[x][y][z]
 
-	def place(self, x, y, z):
+	def place(self, x, y, z, colour=Colour(128,128,128)):
 		if y + 1 < WORLDSIZE and self.selected_block.active_side == "TOP":
-			self.blocks[x][y + 1][z] = Block(x, y + 1, z)
+			self.blocks[x][y + 1][z] = Block(x, y + 1, z, colour=colour)
 		elif x + 1 < WORLDSIZE and self.selected_block.active_side == "LEFT":
-			self.blocks[x + 1][y][z] = Block(x + 1, y, z)
+			self.blocks[x + 1][y][z] = Block(x + 1, y, z, colour=colour)
 		elif z + 1 < WORLDSIZE and self.selected_block.active_side == "RIGHT":
-			self.blocks[x][y][z + 1] = Block(x, y, z + 1)
+			self.blocks[x][y][z + 1] = Block(x, y, z + 1, colour=colour)
 
 
 	def get_active_side(self, block, mousepoint):
