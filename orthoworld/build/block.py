@@ -14,7 +14,12 @@ class Block:
 		self.x: int = x
 		self.y: int = y
 		self.z: int = z
+		self.colour = Colour(128, 128, 128)
 		self.points: BlockPoints = self.get_key_points()
+		self.active_side = None
+
+	def get_coords(self):
+		return self.x, self.y, self.z
 
 
 	def get_origin(self):  # returns the location of the uppermost pixel
@@ -47,7 +52,7 @@ class Block:
 			self.points.surface_left.get(),
 			self.points.surface_front.get(),
 			self.points.surface_right.get()
-		), (128, 128, 128))
+		), self.colour.get())
 
 		# draw left side of box
 		draw_polygon(win, (
@@ -55,7 +60,7 @@ class Block:
 			self.points.surface_front.get(),
 			self.points.side_center.get(),
 			self.points.side_left.get()
-		), (138, 138, 138))
+		), self.colour.get_highlight())
 
 		# draw right side of box
 		draw_polygon(win, (
@@ -63,7 +68,7 @@ class Block:
 			self.points.surface_front.get(),
 			self.points.side_center.get(),
 			self.points.side_right.get()
-		), (118, 118, 118))
+		), self.colour.get_shadow())
 
 
 

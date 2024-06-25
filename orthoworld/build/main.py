@@ -46,9 +46,18 @@ def main():
 
 	run = True
 	while run:
+		mousepos = pygame.mouse.get_pos()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				run = False
+			if world.selected_block is not None:
+				if event.type == pygame.MOUSEBUTTONDOWN:
+					if event.button == 1:  # left mouse button
+						world.delete(world.selected_block)
+					if event.button == 3:  # right mouse button
+						world.place(*world.selected_block.get_coords())
+
+		world.raycast(mousepos)
 
 		update(world)
 
