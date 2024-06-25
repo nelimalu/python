@@ -43,8 +43,8 @@ def main():
 	# 	Block(1, 2, 2),
 	# ]
 
-	#blocks = [Block(x % WORLDSIZE, 0, x // WORLDSIZE) for x in range(WORLDSIZE ** 2)]
-	blocks = [Block(0,0,0)]
+	blocks = [Block(x % WORLDSIZE, 0, x // WORLDSIZE, colour=Colour(128,128,128)) for x in range(WORLDSIZE ** 2)]
+	#blocks = [Block(0,0,0)]
 
 	world = World(blocks)
 	hotbar = Hotbar()
