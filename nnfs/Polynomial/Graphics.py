@@ -4,6 +4,7 @@ import numpy as np
 from Global import *
 
 WINDOW_SHOW_LENGTH = 1
+shown = False
 
 
 def plot(polynomial, color='black'):
@@ -12,10 +13,19 @@ def plot(polynomial, color='black'):
 
 
 def render():
-	plt.title(f"title")
-	plt.show()#block=False)
+	plt.title(f"Generation 1")
+	plt.show()
+	shown = True
+
+	#block=False)
 	# plt.pause(WINDOW_SHOW_LENGTH)
 	# plt.close('all')
+
+def update(gen):
+	plt.title(f"Generation {gen}")
+	plt.draw()
+	plt.pause(0.0001)
+	plt.clf()
 
 
 def plot_generation(generation):
